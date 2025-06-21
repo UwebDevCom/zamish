@@ -1,12 +1,23 @@
 import Link from "next/link";
 import { getFeaturedImage, getPost } from "../api/posts/[id]/route";
 
-const Post: React.FC<any> = async ({ postData }) => {
-    const post = await getPost(postData.id);
-    console.log({ post });
+interface PostData {
+    id: string;
+    featured_media: string;
+    title: {
+        rendered: string;
+    };
+    content: {
+        rendered: string;
+    };
+    acf: {
+        postContentAgent: string;
+    };
+}
 
+const Post: React.FC<{ postData: PostData }> = async ({ postData }) => {
+    const post = await getPost(postData.id);
     const featuredImage = await getFeaturedImage(post.featured_media);
-    console.log({ featuredImage });
 
     return (
         <div

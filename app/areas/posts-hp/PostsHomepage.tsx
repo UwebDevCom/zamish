@@ -2,7 +2,7 @@ import { getWordpressData } from "@/app/api/posts/route";
 import Post from "@/app/components/Post";
 import Image from "next/image";
 
-const PostsHomepage: any = async () => {
+const PostsHomepage = async () => {
     const posts = await getWordpressData();
 
     return (

@@ -1,73 +1,16 @@
 "use client";
 
-// import { useState } from "react";
-
-// const Menu = () => {
-//     const [isOpen, setIsOpen] = useState(false);
-
-//     const handleClick = () => {
-//         setIsOpen(!isOpen);
-//     };
-
-//     return (
-//         <nav className="relative px-2 py-3 mb-3">
-//             <div>
-//                 <button className="cursor-pointer" onClick={handleClick}>
-//                     <svg
-//                         xmlns="http://www.w3.org/2000/svg"
-//                         width="17"
-//                         height="15"
-//                         viewBox="0 0 17 15"
-//                     >
-//                         <g
-//                             id="Group_1"
-//                             data-name="Group 1"
-//                             transform="translate(-41 -35)"
-//                         >
-//                             <rect
-//                                 id="Rectangle_3"
-//                                 data-name="Rectangle 3"
-//                                 width="17"
-//                                 height="3"
-//                                 rx="1.5"
-//                                 transform="translate(41 35)"
-//                                 fill="#090909"
-//                             />
-//                             <rect
-//                                 id="Rectangle_4"
-//                                 data-name="Rectangle 4"
-//                                 width="17"
-//                                 height="3"
-//                                 rx="1.5"
-//                                 transform="translate(41 41)"
-//                                 fill="#090909"
-//                             />
-//                             <rect
-//                                 id="Rectangle_5"
-//                                 data-name="Rectangle 5"
-//                                 width="17"
-//                                 height="3"
-//                                 rx="1.5"
-//                                 transform="translate(41 47)"
-//                                 fill="#090909"
-//                             />
-//                         </g>
-//                     </svg>
-//                 </button>
-//             </div>
-//         </nav>
-//     );
-// };
-
-// export default Menu;
-
-"use client";
-
 import { useState, useEffect } from "react";
 
-const Menu = ({ menuData }: any) => {
+interface MenuItem {
+    id: string;
+    title: string;
+    url: string;
+}
+
+const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [menuItems, setMenuItems] = useState([]);
+    const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -81,22 +24,9 @@ const Menu = ({ menuData }: any) => {
     };
 
     useEffect(() => {
-        console.log({ menuData });
         setMenuItems(menuData);
         menuData?.length > 0 && setLoading(false);
     }, [menuData]);
-
-    // Helper function to get clean URL from WordPress menu item
-    // const getMenuItemUrl = (item: any) => {
-    //     if (item.url) {
-    //         // If it's an internal WordPress link, convert to relative path
-    //         if (item.url.includes("leadr.local")) {
-    //             return item.url.replace("https://leadr.local", "");
-    //         }
-    //         return item.url;
-    //     }
-    //     return "#";
-    // };
 
     return (
         <nav className="relative px-2 py-3 mb-3">

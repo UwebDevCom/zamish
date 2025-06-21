@@ -32,8 +32,6 @@ export default function Post() {
             </div>
         );
     }
-
-    console.log(post);
     return (
         <main className="container mx-auto px-4 py-8 max-w-4xl">
             <article className="bg-white rounded-lg shadow-lg p-8">
