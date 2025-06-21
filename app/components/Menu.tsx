@@ -28,6 +28,11 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         menuData?.length > 0 && setLoading(false);
     }, [menuData]);
 
+    // Reset error when menu is loaded
+    useEffect(() => {
+        setError(null);
+    }, []);
+
     return (
         <nav className="relative px-2 py-3 mb-3">
             <div>
@@ -137,7 +142,7 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
 
                     {!loading && !error && menuItems.length > 0 && (
                         <ul className="py-2 mt-10">
-                            {menuItems.map((item: any) => (
+                            {menuItems.map((item) => (
                                 <li
                                     key={item.id}
                                     className="border-b border-gray-100 last:border-b-0"

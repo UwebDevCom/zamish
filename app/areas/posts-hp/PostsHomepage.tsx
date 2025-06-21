@@ -1,5 +1,5 @@
 import { getWordpressData } from "@/app/api/posts/route";
-import Post from "@/app/components/Post";
+import Post, { PostData } from "@/app/components/Post";
 import Image from "next/image";
 
 const PostsHomepage = async () => {
@@ -28,7 +28,7 @@ const PostsHomepage = async () => {
                     </p>
                 </div>
             </div>
-            {posts.map((post: any) => (
+            {posts.map((post: PostData) => (
                 <Post key={post.id} postData={post} />
             ))}
         </div>
