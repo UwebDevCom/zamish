@@ -3,7 +3,7 @@ import Menu from "./Menu";
 import Image from "next/image";
 
 const Header = async () => {
-    const menu = await fetch("http://localhost:3000/api/menu");
+    const menu = await fetch(`${process.env.CUSTOM_BASE_URL}/api/menu`);
     const menuData = await menu.json();
 
     return (
