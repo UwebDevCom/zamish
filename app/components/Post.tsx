@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { getFeaturedImage, getPost } from "../api/posts/[id]/route";
 import Image from "next/image";
+import { getFeaturedImage } from "../util/getPostData";
+import { getPost } from "../util/getPostData";
 export interface PostData {
     id: string;
     featured_media: string;

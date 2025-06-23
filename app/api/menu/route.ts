@@ -1,12 +1,9 @@
 // http://leadr.local/wp-json/wp/v2/menus/3
 
-import { wpApi } from "@/app/api/posts/route";
+import { getWordpressMainMenu } from "@/app/util/getMainMenu";
+import { NextResponse } from "next/server";
 
-export async function getWordpressMainMenu() {
-    try {
-        const response = await wpApi.get("/menus/3");
-        return response.data;
-    } catch (error) {
-        console.error(error);
-    }
+export async function GET() {
+    const menu = await getWordpressMainMenu();
+    return NextResponse.json(menu);
 }

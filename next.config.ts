@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+    env: {
+        CUSTOM_BASE_URL:
+            process.env.NODE_ENV === "production"
+                ? "https://your-domain.vercel.app"
+                : "http://localhost:3000",
+    },
     /* config options here */
     images: {
         // disableStaticImages: true,

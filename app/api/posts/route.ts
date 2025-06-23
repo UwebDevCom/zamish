@@ -1,19 +1,15 @@
-import axios from "axios";
+import { wpApi } from "@/app/util/communication";
+import { NextResponse } from "next/server";
 
-export const API_URL =
-    process.env.WORDPRESS_API_URL || "http://leadr.local/wp-json/wp/v2";
-
-export const wpApi = axios.create({
-    baseURL: API_URL,
-    timeout: 10000,
-});
-
-export async function getWordpressData() {
+export async function GET() {
     try {
         const response = await wpApi.get("/posts?_embed");
-
-        return response.data;
+        return NextResponse.json(response.data);
     } catch (error) {
         console.error(error);
+        return NextResponse.json(
+            { error: "Failed to fetch posts" },
+            { status: 500 }
+        );
     }
 }

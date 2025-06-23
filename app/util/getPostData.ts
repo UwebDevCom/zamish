@@ -1,4 +1,4 @@
-import { wpApi } from "@/app/api/posts/route";
+import { wpApi } from "./communication";
 
 export async function getPost(id: string) {
     const response = await wpApi.get(`/posts/${id}`);

@@ -1,8 +1,8 @@
 "use client";
 
+import { getPostById } from "@/app/util/getPostData";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getPostById } from "@/app/api/posts/[id]/route";
 
 interface Post {
     title: {

@@ -1,14 +1,14 @@
 import React from "react";
 import Menu from "./Menu";
 import Image from "next/image";
-import { getWordpressMainMenu } from "@/app/api/menu/route";
 
 const Header = async () => {
-    const menu = await getWordpressMainMenu();
+    const menu = await fetch("http://localhost:3000/api/menu");
+    const menuData = await menu.json();
 
     return (
         <header className="flex justify-between w-full max-w-screen-xl h-16 text-center p-4 mx-auto">
-            {menu && <Menu menuData={menu} />}
+            {menu && <Menu menuData={menuData} />}
             <div className="flex items-center justify-center flex-wrap">
                 <Image
                     className="ml-3 relative top-1"

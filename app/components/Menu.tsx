@@ -24,7 +24,9 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
 
     useEffect(() => {
         setMenuItems(menuData);
-        menuData?.length > 0 && setLoading(false);
+        if (menuData?.length > 0) {
+            setLoading(false);
+        }
     }, [menuData]);
 
     return (

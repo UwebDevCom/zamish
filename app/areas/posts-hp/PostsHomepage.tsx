@@ -1,10 +1,18 @@
-import { getWordpressData } from "@/app/api/posts/route";
 import Post, { PostData } from "@/app/components/Post";
 import Image from "next/image";
 
-const PostsHomepage = async () => {
-    const posts = await getWordpressData();
+export const dynamic = "force-dynamic";
 
+const PostsHomepage = async () => {
+    const response = await fetch(`${process.env.CUSTOM_BASE_URL}/api/posts`, {
+        cache: "no-store",
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+    }
+    const postsData = await response.json();
+    console.log({ postsData });
     return (
         <div>
             <div className="text-center flex flex-col items-center justify-center p-10 mb-20">
@@ -28,9 +36,10 @@ const PostsHomepage = async () => {
                     </p>
                 </div>
             </div>
-            {posts.map((post: PostData) => (
-                <Post key={post.id} postData={post} />
-            ))}
+            {postsData &&
+                postsData.map((post: PostData) => (
+                    <Post key={post.id} postData={post} />
+                ))}
         </div>
     );
 };
