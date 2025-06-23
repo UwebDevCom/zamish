@@ -12,7 +12,6 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     // Fetch menu items from WordPress API
     const handleClick = () => {
@@ -27,11 +26,6 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         setMenuItems(menuData);
         menuData?.length > 0 && setLoading(false);
     }, [menuData]);
-
-    // Reset error when menu is loaded
-    useEffect(() => {
-        setError(null);
-    }, []);
 
     return (
         <nav className="relative px-2 py-3 mb-3">
@@ -128,7 +122,7 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                         </div>
                     )}
 
-                    {error && (
+                    {/* {error && (
                         <div className="p-4 text-center text-red-500">
                             Error loading menu: {error}
                         </div>
@@ -138,9 +132,9 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                         <div className="p-4 text-center text-gray-500">
                             No menu items found
                         </div>
-                    )}
+                    )} */}
 
-                    {!loading && !error && menuItems.length > 0 && (
+                    {!loading && menuItems.length > 0 && (
                         <ul className="py-2 mt-10">
                             {menuItems.map((item) => (
                                 <li

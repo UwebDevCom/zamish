@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getFeaturedImage, getPost } from "../api/posts/[id]/route";
-
+import Image from "next/image";
 export interface PostData {
     id: string;
     featured_media: string;
@@ -27,10 +27,12 @@ const Post: React.FC<{ postData: PostData }> = async ({ postData }) => {
             <Link href={`/posts/${post.id}`}>
                 <div className="w-full h-100 rounded-md overflow-hidden relative">
                     {post.featured_media ? (
-                        <img
+                        <Image
                             className="absolute top-0 left-0 w-full h-full object-cover"
-                            src={featuredImage.link}
+                            src={featuredImage.link || ""}
                             alt={post.title.rendered}
+                            width={1000}
+                            height={100}
                         />
                     ) : null}
                 </div>
