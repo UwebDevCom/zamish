@@ -8,7 +8,7 @@ const Header = async () => {
 
     return (
         <header className="flex justify-between w-full max-w-screen-xl h-16 text-center p-4 mx-auto">
-            {menu && <Menu menuData={menuData} />}
+            {menuData && <Menu menuData={menuData} />}
             <div className="flex items-center justify-center flex-wrap">
                 <Image
                     className="ml-3 relative top-1"
