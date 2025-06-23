@@ -11,7 +11,7 @@ interface MenuItem {
 const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     // Fetch menu items from WordPress API
     const handleClick = () => {
@@ -24,9 +24,6 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
 
     useEffect(() => {
         setMenuItems(menuData);
-        if (menuData?.length > 0) {
-            setLoading(false);
-        }
     }, [menuData]);
 
     return (
@@ -118,11 +115,10 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                             <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                     </button>
-                    {loading && (
-                        <div className="p-4 text-center text-gray-500">
-                            Loading menu...
-                        </div>
-                    )}
+
+                    <div className="p-4 text-center text-gray-500">
+                        Loading menu...
+                    </div>
 
                     {/* {error && (
                         <div className="p-4 text-center text-red-500">
@@ -136,7 +132,7 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                         </div>
                     )} */}
 
-                    {!loading && menuItems.length > 0 && (
+                    {menuItems.length > 0 && (
                         <ul className="py-2 mt-10">
                             {menuItems.map((item) => (
                                 <li
