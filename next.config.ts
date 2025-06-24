@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
                 : "http://leadr.local/wp-json/wp/v2",
         CUSTOM_BASE_URL:
             process.env.NODE_ENV === "production"
-                ? "zamish.co.il"
+                ? "https://zamish.co.il"
                 : "http://localhost:3000",
     },
     /* config options here */
