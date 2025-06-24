@@ -3,9 +3,13 @@ import type { NextConfig } from "next";
 console.log(process.env.NODE_ENV);
 const nextConfig: NextConfig = {
     env: {
+        CUSTOM_BACK_URL:
+            process.env.NODE_ENV === "production"
+                ? "https://back.zamish.co.il/wp-json/wp/v2"
+                : "http://leadr.local/wp-json/wp/v2",
         CUSTOM_BASE_URL:
             process.env.NODE_ENV === "production"
-                ? "back.zamish.co.il"
+                ? "zamish.co.il"
                 : "http://localhost:3000",
     },
     /* config options here */
@@ -15,7 +19,7 @@ const nextConfig: NextConfig = {
         remotePatterns: [
             {
                 protocol: "http", // Or 'http' if applicable
-                hostname: "leadr.local", // Replace with the actual hostname of your external image URL
+                hostname: "back.zamish.co.il", // Replace with the actual hostname of your external image URL
                 port: "", // Leave empty if no specific port is required
                 pathname: "/**", // Optional: restrict to a specific path
             },
