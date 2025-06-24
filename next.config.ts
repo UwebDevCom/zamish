@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
+console.log(process.env.NODE_ENV);
 const nextConfig: NextConfig = {
     env: {
         CUSTOM_BASE_URL:
             process.env.NODE_ENV === "production"
-                ? "https://your-domain.vercel.app"
+                ? "back.zamish.co.il"
                 : "http://localhost:3000",
     },
     /* config options here */
