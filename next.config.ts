@@ -18,10 +18,14 @@ const nextConfig: NextConfig = {
         // dangerouslyAllowSVG: true,
         remotePatterns: [
             {
-                protocol: "http", // Or 'http' if applicable
+                protocol: "https", // Or 'http' if applicable
                 hostname: "back.zamish.co.il", // Replace with the actual hostname of your external image URL
-                port: "", // Leave empty if no specific port is required
                 pathname: "/**", // Optional: restrict to a specific path
+            },
+            {
+                protocol: "https",
+                hostname: "zamish.co.il",
+                pathname: "/**",
             },
         ],
     },
