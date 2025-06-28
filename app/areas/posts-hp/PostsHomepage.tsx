@@ -29,11 +29,9 @@ const PostsHomepage = async () => {
             <div className="flex flex-col items-center justify-center top-0 relative z-2 rounded-md bg-white">
                 <div className="p-4 text-center">
                     <h1 className="text-xl font-bold">
-                        בלוג של 4 מנהלים צעירים שרוצים לשפר את עצמם
+                        מדברים על מיומניות ניהול
                     </h1>
-                    <p className="text-sm">
-                        לומדים ניהול ומדברים על זה, תוך כדי פרויקט
-                    </p>
+                    <p className="text-sm">לומדים ניהול ומדברים על זה</p>
                 </div>
             </div>
             {postsData &&

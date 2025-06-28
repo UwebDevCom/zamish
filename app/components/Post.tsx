@@ -43,6 +43,7 @@ const Post: React.FC<{ postData: PostData }> = async ({ postData }) => {
                         {post.title.rendered}
                     </h2>
                     <div
+                        className="text-md"
                         dangerouslySetInnerHTML={{
                             __html: post.content.rendered.slice(0, 100) + "...",
                         }}

@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
     try {
         const response = await wpApi.get("/posts?_embed");
+        console.log(response.data);
         return NextResponse.json(response.data);
     } catch (error) {
         console.error(error);
