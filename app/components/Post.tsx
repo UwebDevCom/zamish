@@ -44,10 +44,18 @@ const Post: React.FC<{ postData: PostData }> = async ({ postData }) => {
                     </h2>
                     <div
                         dangerouslySetInnerHTML={{
-                            __html: post.content.rendered,
+                            __html: post.content.rendered.slice(0, 100) + "...",
                         }}
                     />
-                    {post.acf["postContentAgent"]}
+                    {/* {post.acf["postContentAgent"]} */}
+                    <div className="flex justify-end">
+                        <Link
+                            className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            href={`/posts/${post.id}`}
+                        >
+                            קראו עוד
+                        </Link>
+                    </div>
                 </div>
             </Link>
         </div>

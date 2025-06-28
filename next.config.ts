@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
                 hostname: "zamish.co.il",
                 pathname: "/**",
             },
+            {
+                protocol: "http",
+                hostname: "leadr.local",
+                pathname: "/**",
+            },
         ],
     },
 };
