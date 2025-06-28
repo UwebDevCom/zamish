@@ -16,9 +16,9 @@ const PostsHomepage = async () => {
     return (
         <div>
             <div className="text-center flex flex-col items-center justify-center p-10 mb-20">
-                <div className="h-[500px] overflow-hidden absolute top-18 left-0 w-full">
+                <div className="h-[500px] overflow-hidden absolute top-18 left-0 right-0 m-auto w-full max-w-[1000px]">
                     <Image
-                        className="w-full h-full object-cover z-[-1] "
+                        className="w-full h-full object-cover z-[-1]"
                         src="/images/Four_friends.webp"
                         alt="Blog Image"
                         layout="fill"
