@@ -23,7 +23,10 @@ export default function Post() {
     const params = useParams();
     const postId = params.postId as string;
     const [post, setPost] = useState<Post>();
-    const [featuredImage, setFeaturedImage] = useState<{ link: string }>();
+    const [featuredImage, setFeaturedImage] = useState<{
+        link: string;
+        guid: { rendered: string };
+    }>();
 
     useEffect(() => {
         getPostById(postId).then((data) => setPost(data));
@@ -35,6 +38,7 @@ export default function Post() {
 
             getFeaturedImage(post?.featured_media as number).then((data) => {
                 setFeaturedImage(data);
+                console.log(data);
             });
         }
     }, [post]);
@@ -66,7 +70,7 @@ export default function Post() {
                 {post.featured_media ? (
                     <Image
                         className="absolute top-0 left-0 w-full h-full object-cover"
-                        src={featuredImage.link || ""}
+                        src={featuredImage.guid.rendered || ""}
                         alt={post.title.rendered}
                         width={1000}
                         height={100}

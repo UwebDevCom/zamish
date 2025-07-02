@@ -19,6 +19,7 @@ export interface PostData {
 const Post: React.FC<{ postData: PostData }> = async ({ postData }) => {
     const post = await getPost(postData.id);
     const featuredImage = await getFeaturedImage(post.featured_media);
+    console.log(featuredImage);
 
     return (
         <div
@@ -30,7 +31,7 @@ const Post: React.FC<{ postData: PostData }> = async ({ postData }) => {
                     {post.featured_media ? (
                         <Image
                             className="absolute top-0 left-0 w-full h-full object-cover"
-                            src={featuredImage.link || ""}
+                            src={featuredImage.guid.rendered || ""}
                             alt={post.title.rendered}
                             width={1000}
                             height={100}

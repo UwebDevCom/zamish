@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 interface MenuItem {
@@ -86,7 +87,7 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
 
                 {/* Menu Items */}
                 <div
-                    className={`w-[30vw]
+                    className={`md:w-[30vw] w-[70vw]
                     fixed top-0 right-0 bottom-0 bg-white shadow-lg z-50 
                     transition-all duration-300 ease-in-out
                     ${
@@ -116,9 +117,9 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                         </svg>
                     </button>
 
-                    <div className="p-4 text-center text-gray-500">
+                    {/* <div className="p-4 text-center text-gray-500">
                         Loading menu...
-                    </div>
+                    </div> */}
 
                     {/* {error && (
                         <div className="p-4 text-center text-red-500">
@@ -145,7 +146,7 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                                     !item.url.includes(
                                         "your-wordpress-site.com"
                                     ) ? (
-                                        <a
+                                        <Link
                                             href={item.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -153,7 +154,7 @@ const Menu: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                                             onClick={handleMenuItemClick}
                                         >
                                             {item.title}
-                                        </a>
+                                        </Link>
                                     ) : null}
                                 </li>
                             ))}
